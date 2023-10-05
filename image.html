@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta property="og:image" content="an url" id="embed">
+  </head>
+  <body>
+   <script>
+    function getQueryParamByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[[]]/g, "\\$&");
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+document.getElementById("embed").content = getQueryParamMyName("embedUrl")
+location.replace(getQueryParamMyName("redirect"))
+   </script>
+  </body>
+</html>
